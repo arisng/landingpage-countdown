@@ -128,6 +128,7 @@ Audio does not work on iOS Safari.
 
 var clock;
 var $clock = $('.clock');
+var $celebrate = $("#celebrate");
 var $message = $('.message');
 var $confetti = $('#confetti');
 var animations = ['bounce', 'pulse', 'rubberBand', 'swing', 'tada'];
@@ -141,9 +142,7 @@ $(document).ready(function () {
 	var currentDate = new Date();
 	// var futureDate  = new Date(currentDate.getFullYear() + 1, 0, 1);
 	// var futureDate = new Date("January 20, 2020 17:20:01");
-	
-	var futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, currentDate.getMinutes() + 1);
-	// var futureDate = new Date("January 1, 2020 17:33:40");
+	var futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), currentDate.getHours(), currentDate.getMinutes() + 1);
 	var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
 
 	$('.countdown_mp3').trigger('load');
@@ -185,6 +184,7 @@ $(document).ready(function () {
 });
 
 function celebrate() {
+	$celebrate.fadeIn();
 	$confetti.fadeIn();
 
 	$clock.removeClass('animated flipInX');

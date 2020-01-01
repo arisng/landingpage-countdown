@@ -5,8 +5,6 @@
 	<meta charset="UTF-8">
 	<title>Happy New Year</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<link rel='stylesheet' href='https://peter.build/newyears/css/style.css'>
 	<link rel='stylesheet' href='https://peter.build/newyears/css/flipclock.css'>
 	<link rel='stylesheet' href='https://peter.build/newyears/css/animate.css'>
@@ -17,17 +15,12 @@
 
 <body>
 	<main class="container">
-		<section>
-			<img src="./empire_city_logo2.png" style="
-				width: 80%;
-				max-width: 350px;
-				height: auto;
-				margin-left: auto;
-				margin-right: auto;
-				display: flex;">
+		<section id="logo">
+			<!-- <img src="./empire_city_logo2.png"> -->
+			<img src="./empire_city_logo2.jpg">
 		</section>
 		
-		<section>
+		<section id="celebrate" style="display: none">
 			<div class="message">
 				Happy Year End Party ❤<br>
 
@@ -35,16 +28,16 @@
 			</div>
 		</section>
 
-		<section>
+		<section id="clock">
 			<div id="countdown" class="clock animated flipInX"></div>
 		</section>
 
-		<section style="flex-direction: column;">
+		<section id="banner" style="flex-direction: column;">
 			<img src="./poster_performance.jpg"
 			 style="width: 100vw; height: auto;">
 		</section>
 
-		<div style="--aspect-ratio: 16/9;">
+		<div id="video" style="--aspect-ratio: 16/9;">
 			<iframe width="350" height="205"
 			src="https://www.youtube.com/embed/e6KDplxH9xc" 
 			frameborder="0" 

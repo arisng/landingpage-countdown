@@ -11,28 +11,38 @@ Audio does not work on iOS Safari.
 */
 
 body {
-    overflow: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
     margin-left: auto;
     margin-right: auto;
 }
 
 section {
-    margin-bottom: 2rem;
     display: flex;
     margin-left: auto;
     margin-right: auto;
 }
 
-#countdown {
-    margin-top: 5rem;
-    position: relative;
+#logo {
+    margin-top: 1rem;
+}
+
+#logo img {
+    width: 200px;
+    height: 64px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+#celebrate {
+    margin-top: 1rem;
 }
 
 canvas {
@@ -45,15 +55,23 @@ canvas {
     position: relative;
     color: #00a1ad;
     height: auto;
-    font-size: 76px;
     margin-left: 5px;
     margin-right: 5px;
+    font-size: 76px;
     line-height: unset;
+}
+
+#countdown {
+    margin-top: 4rem;
+    position: relative;
+}
+
+#video {
+    margin-top: 1rem;
 }
 
 .sticky-icon {
     position: sticky;
-    bottom: 10px;
     display: flex;
     flex-direction: row-reverse;
 }
