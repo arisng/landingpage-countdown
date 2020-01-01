@@ -10,7 +10,7 @@ Audio does not work on iOS Safari.
 
 */
 
-(function() {
+(function () {
 	var COLORS, Confetti, NUM_CONFETTI, PI_2, canvas, confetti, context, drawCircle, i, range, resizeWindow, xpos;
 
 	NUM_CONFETTI = 350;
@@ -25,22 +25,22 @@ Audio does not work on iOS Safari.
 	window.w = 0;
 	window.h = 0;
 
-	resizeWindow = function() {
+	resizeWindow = function () {
 		window.w = canvas.width = window.innerWidth;
 		return window.h = canvas.height = window.innerHeight;
 	};
 
 	window.addEventListener('resize', resizeWindow, false);
 
-	window.onload = function() {
+	window.onload = function () {
 		return setTimeout(resizeWindow, 0);
 	};
 
-	range = function(a, b) {
+	range = function (a, b) {
 		return (b - a) * Math.random() + a;
 	};
 
-	drawCircle = function(x, y, r, style) {
+	drawCircle = function (x, y, r, style) {
 		context.beginPath();
 		context.arc(x, y, r, 0, PI_2, false);
 		context.fillStyle = style;
@@ -49,17 +49,17 @@ Audio does not work on iOS Safari.
 
 	xpos = 0.4;
 
-	document.onmousemove = function(e) {
+	document.onmousemove = function (e) {
 		return xpos = e.pageX / w;
 	};
 
-	window.requestAnimationFrame = (function() {
-		return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(callback) {
-				return window.setTimeout(callback, 1000 / 60);
-			};
+	window.requestAnimationFrame = (function () {
+		return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
+			return window.setTimeout(callback, 1000 / 60);
+		};
 	})();
 
-	Confetti = (function() {
+	Confetti = (function () {
 		function Confetti() {
 			this.style = COLORS[~~range(0, 5)];
 			this.rgb = "rgba(" + this.style[0] + "," + this.style[1] + "," + this.style[2];
@@ -68,7 +68,7 @@ Audio does not work on iOS Safari.
 			this.replace();
 		}
 
-		Confetti.prototype.replace = function() {
+		Confetti.prototype.replace = function () {
 			this.opacity = 0;
 			this.dop = 0.03 * range(1, 4);
 			this.x = range(-this.r2, w - this.r2);
@@ -79,7 +79,7 @@ Audio does not work on iOS Safari.
 			return this.vy = 0.7 * this.r + range(-1, 1);
 		};
 
-		Confetti.prototype.draw = function() {
+		Confetti.prototype.draw = function () {
 			var _ref;
 			this.x += this.vx;
 			this.y += this.vy;
@@ -101,7 +101,7 @@ Audio does not work on iOS Safari.
 
 	})();
 
-	confetti = (function() {
+	confetti = (function () {
 		var _i, _results;
 		_results = [];
 		for (i = _i = 1; 1 <= NUM_CONFETTI ? _i <= NUM_CONFETTI : _i >= NUM_CONFETTI; i = 1 <= NUM_CONFETTI ? ++_i : --_i) {
@@ -110,7 +110,7 @@ Audio does not work on iOS Safari.
 		return _results;
 	})();
 
-	window.step = function() {
+	window.step = function () {
 		var c, _i, _len, _results;
 		requestAnimationFrame(step);
 		context.clearRect(0, 0, w, h);
@@ -137,59 +137,61 @@ var interval = 10000;
 var trigger_count = 0;
 var trigger_timeout = null;
 
-$(document).ready(function() {
+$(document).ready(function () {
 	var currentDate = new Date();
-    // var futureDate  = new Date(currentDate.getFullYear() + 1, 0, 1);
-    var futureDate  = new Date("January 25, 2020 00:00:00");
+	// var futureDate  = new Date(currentDate.getFullYear() + 1, 0, 1);
+	// var futureDate = new Date("January 20, 2020 17:20:01");
+	
+	var futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, currentDate.getMinutes() + 1);
+	// var futureDate = new Date("January 1, 2020 17:33:40");
 	var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
 
 	$('.countdown_mp3').trigger('load');
-	$('.happy_mp3').trigger('load');
+	// $('.happy_mp3').trigger('load');
 
 	clock = $clock.FlipClock(diff, {
 		clockFace: 'DailyCounter',
 		countdown: true,
 		callbacks: {
-			interval: function() {
+			interval: function () {
 				var time = this.factory.getTime().time;
 
-				if(time === 10) {
+				if (time === 10) {
 					$('.countdown_mp3').trigger('play');
 				}
 
-				if(time <= 10 && time > 0) {
+				if (time <= 10 && time > 0) {
 					pulse();
 				}
-				else if(time <= 0) {
+				else if (time <= 0) {
 					celebrate();
 				}
 			}
 		}
 	});
 
-	$('.wrapper').click(function(){
-		trigger_count++;
+	// $('.wrapper').click(function(){
+	// 	trigger_count++;
 
-		clearTimeout(trigger_timeout);
-		trigger_timeout = setTimeout(function(){
-			trigger_count = 0;
-		}, 500);
+	// 	clearTimeout(trigger_timeout);
+	// 	trigger_timeout = setTimeout(function(){
+	// 		trigger_count = 0;
+	// 	}, 500);
 
-		if(trigger_count === 5){
-			celebrate();
-		}
-	});
+	// 	if(trigger_count === 5){
+	// 		celebrate();
+	// 	}
+	// });
 });
 
-function celebrate()
-{
+function celebrate() {
 	$confetti.fadeIn();
-	
+
 	$clock.removeClass('animated flipInX');
 	$clock.addClass('animated flipOutX');
 
 	clearTimeout(timeout);
-	setTimeout(function(){
+	setTimeout(function () {
 		$message.addClass('animated flipInX').fadeIn();
 		timeout = setTimeout(bounce, interval);
 	}, 350);
@@ -197,30 +199,27 @@ function celebrate()
 	$('.happy_mp3').trigger('play');
 }
 
-function pulse()
-{
+function pulse() {
 	$clock.removeClass('animated flipInX flipOutX pulse');
 
 	clearTimeout(timeout);
-	timeout = setTimeout(function(){
+	timeout = setTimeout(function () {
 		$clock.addClass('animated pulse');
 	}, 50);
 }
 
-function bounce()
-{
+function bounce() {
 	clearTimeout(timeout);
-	
+
 	$message.removeClass('animated bounce flipInX pulse rubberBand swing tada');
-	
-	setTimeout(function(){ 
+
+	setTimeout(function () {
 		$message.addClass('animated ' + animations[current_animation]);
 		current_animation++;
-		if(current_animation == animations.length)
-		{
+		if (current_animation == animations.length) {
 			current_animation = 0;
 		}
 	}, 100);
-	
+
 	timeout = setTimeout(bounce, interval);
 }
