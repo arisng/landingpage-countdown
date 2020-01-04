@@ -24,8 +24,8 @@ body {
 
 section {
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
 }
 
 #logo {
@@ -42,7 +42,7 @@ section {
 }
 
 #celebrate {
-    margin-top: 1rem;
+    margin-top: 3rem;
 }
 
 canvas {
@@ -53,12 +53,31 @@ canvas {
 
 .message {
     position: relative;
-    color: #00a1ad;
     height: auto;
     margin-left: 5px;
     margin-right: 5px;
-    font-size: 76px;
+
+    font-family: 'Satisfy', cursive;
+    font-size: 65px;
+    color: #00a1ad;
     line-height: unset;
+}
+
+section#clock {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    section#clock {
+        padding-left: 50px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    section#clock {
+        padding-left: 50px;
+    }
 }
 
 #countdown {
@@ -66,14 +85,28 @@ canvas {
     position: relative;
 }
 
+#banner img {
+    max-width: 80%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 768px) {
+    #banner img {
+        margin-top: 3rem;
+    }
+}
+
 #video {
-    margin-top: 1rem;
+    margin-top: 3rem;
 }
 
 .sticky-icon {
     position: sticky;
     display: flex;
     flex-direction: row-reverse;
+    bottom: 0;
 }
 
 .sticky-icon a {
