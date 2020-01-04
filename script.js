@@ -141,8 +141,8 @@ var trigger_timeout = null;
 $(document).ready(function () {
 	var currentDate = new Date();
 	// var futureDate  = new Date(currentDate.getFullYear() + 1, 0, 1);
-	// var futureDate = new Date("January 20, 2020 17:20:01");
-	var futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), currentDate.getHours(), currentDate.getMinutes() + 1);
+	 var futureDate = new Date("January 20, 2020 17:20:01");
+	//var futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), currentDate.getHours(), currentDate.getMinutes() + 1);
 	var diff = futureDate.getTime() / 1000 - currentDate.getTime() / 1000;
 
 	$('.countdown_mp3').trigger('load');
